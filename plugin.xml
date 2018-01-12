@@ -114,7 +114,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 		</js-module>
 	</platform>
 
-	<hook type="before_plugin_install" src="scripts/after_prepare.js" />
+	<hook type="after_prepare" src="scripts/after_prepare.js" />
 	<hook type="after_plugin_install" src="scripts/after_plugin_add.js" />
 	<hook type="after_platform_add" src="scripts/after_plugin_add.js" />
 	<hook type="before_plugin_uninstall" src="scripts/before_plugin_rm.js" />
