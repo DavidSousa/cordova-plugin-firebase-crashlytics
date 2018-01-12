@@ -47,8 +47,8 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 // Crashlytics test
-// import com.crashlytics.android.Crashlytics;
-// import io.fabric.sdk.android.Fabric;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 public class FirebasePlugin extends CordovaPlugin {
 
