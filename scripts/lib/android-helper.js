@@ -23,6 +23,7 @@ module.exports = {
             "}",
             "",
             "apply plugin: 'io.fabric'",
+			"apply plugin: 'com.google.gms.google-services'",
 			"allprojects {",
 			"	repositories {",
 			"		maven {",
