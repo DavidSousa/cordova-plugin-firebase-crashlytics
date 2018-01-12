@@ -1,0 +1,31 @@
+{
+  "author": {
+    "name": "David Sousa"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavidSousa/cordova-plugin-firebase-crashlytics"
+  },
+  "name": "cordova-plugin-firebase-crashlytics",
+  "version": "0.1.26",
+  "description": "Cordova plugin for Google Firebase",
+  "cordova": {
+    "id": "cordova-plugin-firebase-crashlytics",
+    "platforms": [
+      "android",
+      "ios",
+      "browser"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-browser",
+    "firebase",
+    "push",
+    "notifications",
+    "phone auth"
+  ]
+}
