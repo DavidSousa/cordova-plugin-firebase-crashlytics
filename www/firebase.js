@@ -132,6 +132,6 @@ exports.stopTrace = function (name, success, error) {
     exec(success, error, "FirebasePlugin", "stopTrace", [name]);
 };
 
-exports.forceCrash = function (success, error) {
+exports.forceCrash = function (crashMessage, success, error) {
     exec(success, error, "FirebasePlugin", "forceCrash", []);
 };
