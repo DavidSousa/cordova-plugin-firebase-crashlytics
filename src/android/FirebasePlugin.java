@@ -669,7 +669,7 @@ public class FirebasePlugin extends CordovaPlugin {
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 try {
-                    boolean isEnabled = FirebasePerformance.isPerformanceCollectionEnabled();
+                    boolean isEnabled = FirebasePerformance.getInstance().isPerformanceCollectionEnabled();
                     callbackContext.success(isEnabled);
                 } catch (Exception e) {
                     FirebaseCrash.log(e.getMessage());
