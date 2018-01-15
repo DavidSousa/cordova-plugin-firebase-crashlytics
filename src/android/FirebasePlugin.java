@@ -670,7 +670,7 @@ public class FirebasePlugin extends CordovaPlugin {
             public void run() {
                 try {
                     boolean isEnabled = FirebasePerformance.getInstance().isPerformanceCollectionEnabled();
-                    callbackContext.success(isEnabled);
+                    callbackContext.success(String.valueOf(isEnabled));
                 } catch (Exception e) {
                     FirebaseCrash.log(e.getMessage());
                     e.printStackTrace();
@@ -771,7 +771,7 @@ public class FirebasePlugin extends CordovaPlugin {
             public void run() {
                 try {
                     boolean isEnabled = FirebaseCrash.isCrashCollectionEnabled();
-                    callbackContext.success(isEnabled);
+                    callbackContext.success(String.valueOf(isEnabled));
                 } catch (Exception e) {
                     FirebaseCrash.log(e.getMessage());
                     e.printStackTrace();
