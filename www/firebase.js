@@ -132,6 +132,14 @@ exports.stopTrace = function (name, success, error) {
     exec(success, error, "FirebasePlugin", "stopTrace", [name]);
 };
 
+exports.enablePerformanceMonitoring = function (enable, success, error) {
+    exec(success, error, "FirebasePlugin", "enablePerformanceMonitoring", [enable]);
+};
+
+exports.isPerformanceMonitoringEnabled = function (success, error) {
+    exec(success, error, "FirebasePlugin", "isPerformanceMonitoringEnabled", []);
+};
+
 exports.forceCrashlytics = function (success, error) {
     exec(success, error, "FirebasePlugin", "forceCrashlytics");
 };
