@@ -151,3 +151,11 @@ exports.logCrashlytics = function (crashMessage, success, error) {
 exports.logExceptionCrashlytics = function (crashMessage, success, error) {
     exec(success, error, "FirebasePlugin", "logExceptionCrashlytics", [crashMessage]);
 };
+
+exports.isCrashReportEnabled = function (success, error) {
+    exec(success, error, "FirebasePlugin", "isCrashReportEnabled", []);
+};
+
+exports.enableCrashReport = function (enable, success, error) {
+    exec(success, error, "FirebasePlugin", "enableCrashReport", [enable]);
+};

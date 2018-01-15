@@ -182,6 +182,12 @@ public class FirebasePlugin extends CordovaPlugin {
         } else if (action.equals("isPerformanceMonitoringEnabled")) {
             this.isPerformanceMonitoringEnabled(callbackContext);
             return true;
+        } else if (action.equals("enableCrashReport")) {
+            this.enableCrashReport(callbackContext, args.getBoolean(0));
+            return true;
+        } else if (action.equals("isCrashReportEnabled")) {
+            this.isCrashReportEnabled(callbackContext);
+            return true;
         }
         return false;
     }
@@ -663,7 +669,7 @@ public class FirebasePlugin extends CordovaPlugin {
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 try {
-                    bool isEnabled = FirebasePerformance.isPerformanceCollectionEnabled();
+                    boolean isEnabled = FirebasePerformance.isPerformanceCollectionEnabled();
                     callbackContext.success(isEnabled);
                 } catch (Exception e) {
                     FirebaseCrash.log(e.getMessage());
@@ -736,6 +742,36 @@ public class FirebasePlugin extends CordovaPlugin {
                 try {
                     FirebaseCrash.report(new Exception(message));
                     callbackContext.success(1);
+                } catch (Exception e) {
+                    FirebaseCrash.log(e.getMessage());
+                    e.printStackTrace();
+                    callbackContext.error(e.getMessage());
+                }
+            }
+        });
+    }
+
+    private void enableCrashReport(final CallbackContext callbackContext, final boolean enable) {
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                try {
+                    FirebaseCrash.setCrashCollectionEnabled(enable);
+                    callbackContext.success();
+                } catch (Exception e) {
+                    FirebaseCrash.log(e.getMessage());
+                    e.printStackTrace();
+                    callbackContext.error(e.getMessage());
+                }
+            }
+        });
+    }
+
+    private void isCrashReportEnabled(final CallbackContext callbackContext) {
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                try {
+                    boolean isEnabled = FirebaseCrash.isCrashCollectionEnabled();
+                    callbackContext.success(isEnabled);
                 } catch (Exception e) {
                     FirebaseCrash.log(e.getMessage());
                     e.printStackTrace();
