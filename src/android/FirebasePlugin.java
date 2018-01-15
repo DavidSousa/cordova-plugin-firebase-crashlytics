@@ -656,7 +656,7 @@ public class FirebasePlugin extends CordovaPlugin {
                     callbackContext.error(e.getMessage());
                 }
             }
-        })
+        });
     }
 
     private void isPerformanceMonitoringEnabled(final CallbackContext callbackContext) {
@@ -671,7 +671,7 @@ public class FirebasePlugin extends CordovaPlugin {
                     callbackContext.error(e.getMessage());
                 }
             }
-        })
+        });
     }
 
     // 
