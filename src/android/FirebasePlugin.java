@@ -167,8 +167,14 @@ public class FirebasePlugin extends CordovaPlugin {
         } else if (action.equals("stopTrace")) {
             this.stopTrace(callbackContext, args.getString(0));
             return true;
-        } else if (action.equals("forceCrash")) {
-            this.forceCrash(callbackContext, args.getString(0));
+        } else if (action.equals("forceCrashlytics")) {
+            this.forceCrashlytics(callbackContext);
+            return true;
+        } else if (action.equals("logCrashlytics")) {
+            this.logCrashlytics(callbackContext, args.getString(0));
+            return true;
+        } else if (action.equals("logExceptionCrashlytics")) {
+            this.logExceptionCrashlytics(callbackContext, args.getString(0));
             return true;
         }
         return false;
@@ -800,13 +806,45 @@ public class FirebasePlugin extends CordovaPlugin {
         });
     }
 
-    private void forceCrash(final CallbackContext callbackContext, final String crashMessage) {
+    private void forceCrashlytics(final CallbackContext callbackContext) {
         final FirebasePlugin self = this;
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 try {
                     Crashlytics.getInstance().crash();
-                    callbackContext.success(crashMessage);
+                    callbackContext.success();
+                } catch (Exception e) {
+                    FirebaseCrash.log(e.getMessage());
+                    e.printStackTrace();
+                    callbackContext.error(e.getMessage());
+                }
+            }
+        });
+    }
+
+    private void logCrashlytics(final CallbackContext callbackContext, final String crashMessage) {
+        final FirebasePlugin self = this;
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                try {
+                    Crashlytics.log(crashMessage);
+                    callbackContext.success();
+                } catch (Exception e) {
+                    FirebaseCrash.log(e.getMessage());
+                    e.printStackTrace();
+                    callbackContext.error(e.getMessage());
+                }
+            }
+        });
+    }
+
+    private void logExceptionCrashlytics(final CallbackContext callbackContext, final String crashMessage) {
+        final FirebasePlugin self = this;
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                try {
+                    Crashlytics.logException(new Throwable(crashMessage));
+                    callbackContext.success();
                 } catch (Exception e) {
                     FirebaseCrash.log(e.getMessage());
                     e.printStackTrace();
