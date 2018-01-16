@@ -586,7 +586,7 @@ public class FirebasePlugin extends CordovaPlugin {
                         self.traces.put(name, myTrace);
                     }
 
-                    callbackContext.success(self.traces.length);
+                    callbackContext.success(self.traces.size());
                 } catch (Exception e) {
                     FirebaseCrash.log(e.getMessage());
                     e.printStackTrace();
@@ -637,7 +637,7 @@ public class FirebasePlugin extends CordovaPlugin {
                     if ( myTrace != null && myTrace instanceof Trace ){ //
                         myTrace.stop();
                         self.traces.remove(name);
-                        callbackContext.success(self.traces.length);
+                        callbackContext.success(self.traces.size());
                     } else {
                         callbackContext.error("Trace not found");
                     }
