@@ -44,12 +44,11 @@ exports.unregister = function(success, error) {
     exec(success, error, "FirebasePlugin", "unregister", []);
 };
 
+//
+// Firebase Analytics
+//
 exports.logEvent = function(name, params, success, error) {
     exec(success, error, "FirebasePlugin", "logEvent", [name, params]);
-};
-
-exports.logError = function(message, success, error) {
-    exec(success, error, "FirebasePlugin", "logError", [message]);
 };
 
 exports.setScreenName = function(name, success, error) {
@@ -64,6 +63,62 @@ exports.setUserProperty = function(name, value, success, error) {
     exec(success, error, "FirebasePlugin", "setUserProperty", [name, value]);
 };
 
+//
+// Performance Monitoring
+//
+exports.startTrace = function (name, success, error) {
+    exec(success, error, "FirebasePlugin", "startTrace", [name]);
+};
+
+exports.incrementCounter = function (name, counterNamed, success, error) {
+    exec(success, error, "FirebasePlugin", "incrementCounter", [name, counterNamed]);
+};
+
+exports.stopTrace = function (name, success, error) {
+    exec(success, error, "FirebasePlugin", "stopTrace", [name]);
+};
+
+exports.enablePerformanceMonitoring = function (enable, success, error) {
+    exec(success, error, "FirebasePlugin", "enablePerformanceMonitoring", [enable]);
+};
+
+exports.isPerformanceMonitoringEnabled = function (success, error) {
+    exec(success, error, "FirebasePlugin", "isPerformanceMonitoringEnabled", []);
+};
+
+//
+// Crashlytics
+//
+exports.forceCrashlytics = function (success, error) {
+    exec(success, error, "FirebasePlugin", "forceCrashlytics");
+};
+
+exports.logCrashlytics = function (crashMessage, success, error) {
+    exec(success, error, "FirebasePlugin", "logCrashlytics", [crashMessage]);
+};
+
+exports.logExceptionCrashlytics = function (crashMessage, success, error) {
+    exec(success, error, "FirebasePlugin", "logExceptionCrashlytics", [crashMessage]);
+};
+
+//
+// Crash Reporting
+//
+exports.logError = function(message, success, error) {
+    exec(success, error, "FirebasePlugin", "logError", [message]);
+};
+
+exports.isCrashReportEnabled = function (success, error) {
+    exec(success, error, "FirebasePlugin", "isCrashReportEnabled", []);
+};
+
+exports.enableCrashReport = function (enable, success, error) {
+    exec(success, error, "FirebasePlugin", "enableCrashReport", [enable]);
+};
+
+//
+// Remote Configuration
+//
 exports.activateFetched = function (success, error) {
     exec(success, error, "FirebasePlugin", "activateFetched", []);
 };
@@ -118,44 +173,4 @@ exports.setDefaults = function (defaults, namespace, success, error) {
         success = namespace;
     }
     exec(success, error, "FirebasePlugin", "setDefaults", args);
-};
-
-exports.startTrace = function (name, success, error) {
-    exec(success, error, "FirebasePlugin", "startTrace", [name]);
-};
-
-exports.incrementCounter = function (name, counterNamed, success, error) {
-    exec(success, error, "FirebasePlugin", "incrementCounter", [name, counterNamed]);
-};
-
-exports.stopTrace = function (name, success, error) {
-    exec(success, error, "FirebasePlugin", "stopTrace", [name]);
-};
-
-exports.enablePerformanceMonitoring = function (enable, success, error) {
-    exec(success, error, "FirebasePlugin", "enablePerformanceMonitoring", [enable]);
-};
-
-exports.isPerformanceMonitoringEnabled = function (success, error) {
-    exec(success, error, "FirebasePlugin", "isPerformanceMonitoringEnabled", []);
-};
-
-exports.forceCrashlytics = function (success, error) {
-    exec(success, error, "FirebasePlugin", "forceCrashlytics");
-};
-
-exports.logCrashlytics = function (crashMessage, success, error) {
-    exec(success, error, "FirebasePlugin", "logCrashlytics", [crashMessage]);
-};
-
-exports.logExceptionCrashlytics = function (crashMessage, success, error) {
-    exec(success, error, "FirebasePlugin", "logExceptionCrashlytics", [crashMessage]);
-};
-
-exports.isCrashReportEnabled = function (success, error) {
-    exec(success, error, "FirebasePlugin", "isCrashReportEnabled", []);
-};
-
-exports.enableCrashReport = function (enable, success, error) {
-    exec(success, error, "FirebasePlugin", "enableCrashReport", [enable]);
 };

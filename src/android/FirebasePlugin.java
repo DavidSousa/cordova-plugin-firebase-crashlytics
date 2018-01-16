@@ -19,6 +19,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigValue;
 import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.AddTrace;
 import com.google.firebase.perf.metrics.Trace;
 import me.leolin.shortcutbadger.ShortcutBadger;
 import org.apache.cordova.CallbackContext;
@@ -585,7 +586,7 @@ public class FirebasePlugin extends CordovaPlugin {
                         self.traces.put(name, myTrace);
                     }
 
-                    callbackContext.success();
+                    callbackContext.success(self.traces.length);
                 } catch (Exception e) {
                     FirebaseCrash.log(e.getMessage());
                     e.printStackTrace();
@@ -636,7 +637,7 @@ public class FirebasePlugin extends CordovaPlugin {
                     if ( myTrace != null && myTrace instanceof Trace ){ //
                         myTrace.stop();
                         self.traces.remove(name);
-                        callbackContext.success();
+                        callbackContext.success(self.traces.length);
                     } else {
                         callbackContext.error("Trace not found");
                     }
