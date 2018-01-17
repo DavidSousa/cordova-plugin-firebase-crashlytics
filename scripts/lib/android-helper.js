@@ -36,7 +36,7 @@ module.exports = {
 			"	compile('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {",
 			"		transitive = true",
 			"	}",
-			"	compile 'com.google.firebase:firebase-core:11.8.0'",
+			"	compile 'com.google.firebase:firebase-core:+'",
 			"}",
             "// Fabric Cordova Plugin - End Fabric Build Tools",
         ].join("\n");
