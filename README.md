@@ -2,12 +2,6 @@
 This plugin brings push notifications, analytics, event tracking, crash reporting and more from Google Firebase to your Cordova project!
 Android and iOS supported.
 
-Donations are welcome and will go towards further development of this project. Use the wallet address below to donate.
-
-BTC: 1JuXhHMCPHXT2fDfSRUTef9TpE2D67sc9f
-
-Thank you for your support!
-
 ## in this fork
 ### verifyPhoneNumber (Android only)
 
